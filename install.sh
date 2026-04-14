@@ -3,7 +3,7 @@
 # Usage: curl -fsSL https://raw.githubusercontent.com/bazzaztech/CoveSync/main/install.sh | sh
 set -e
 
-REPO="bazzaztech/CoveSync"
+REPO="bazzaztech/covesync-releases"
 INSTALL_DIR="$HOME/.local/bin"
 SERVICE_DIR="$HOME/.config/systemd/user"
 BINARY="covesync"
