@@ -1,0 +1,17 @@
+[Unit]
+Description=CoveSync LAN file sync daemon
+Documentation=https://github.com/bazzaztech/CoveSync
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+ExecStart=%h/.local/bin/covesync
+Restart=on-failure
+RestartSec=5
+
+# Log to the systemd journal (view with: journalctl --user -u covesync -f)
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=default.target
