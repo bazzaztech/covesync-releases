@@ -70,7 +70,7 @@ if command -v systemctl >/dev/null 2>&1 && systemctl --user status >/dev/null 2>
 
   systemctl --user daemon-reload
   systemctl --user enable covesync
-  systemctl --user start covesync
+  systemctl --user restart covesync
 
   echo "Systemd user service installed and started."
   echo "  Status : systemctl --user status covesync"
