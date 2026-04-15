@@ -51,6 +51,17 @@ mv "$TMP" "$INSTALL_DIR/$BINARY"
 
 echo "Binary installed to $INSTALL_DIR/$BINARY"
 
+# ── install certutil (needed for Firefox/Chrome CA trust) ────────────────────
+if ! command -v certutil >/dev/null 2>&1; then
+  if command -v pacman >/dev/null 2>&1; then
+    sudo pacman -S --noconfirm nss 2>/dev/null && echo "Installed certutil (nss)" || true
+  elif command -v apt-get >/dev/null 2>&1; then
+    sudo apt-get install -y libnss3-tools 2>/dev/null && echo "Installed certutil (libnss3-tools)" || true
+  elif command -v dnf >/dev/null 2>&1; then
+    sudo dnf install -y nss-tools 2>/dev/null && echo "Installed certutil (nss-tools)" || true
+  fi
+fi
+
 # ── ensure install dir is on PATH ─────────────────────────────────────────────
 case ":$PATH:" in
   *":$INSTALL_DIR:"*) ;;
